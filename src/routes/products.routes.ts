@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { createProductController } from "../modules/products/useCases/createProduct";
 
 const productsRoutes = Router();
 
@@ -13,7 +14,7 @@ productsRoutes.get("/:id", (req, res) => {
 });
 
 productsRoutes.post("/", (req, res) => {
-	return res.status(201).send(req.body);
+	return createProductController.handle(req, res);
 });
 
 productsRoutes.put("/:id", (req, res) => {

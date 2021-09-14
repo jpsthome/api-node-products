@@ -13,7 +13,7 @@ class ProductsRepository implements IProductsRepository {
 		this.products = [];
 	}
 
-	public static getIntance(): ProductsRepository {
+	public static getInstance(): ProductsRepository {
 		if (!ProductsRepository.INSTANCE) {
 			ProductsRepository.INSTANCE = new ProductsRepository();
 		}
@@ -23,6 +23,12 @@ class ProductsRepository implements IProductsRepository {
 	findById(id: string): Product {
 		return this.products.find((prod) => {
 			prod.id === id;
+		});
+	}
+
+	findByName(name: string): Product {
+		return this.products.find((prod) => {
+			prod.name === name;
 		});
 	}
 
@@ -57,3 +63,5 @@ class ProductsRepository implements IProductsRepository {
 		});
 	}
 }
+
+export { ProductsRepository };
