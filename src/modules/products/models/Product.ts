@@ -6,7 +6,8 @@ class Product {
 	cpf: string;
 	sex: string;
 	email: string;
-	createdAt: Date;
+	createdAt?: Date;
+	updatedAt?: Date;
 
 	constructor() {
 		if (!this.id) {
@@ -14,3 +15,5 @@ class Product {
 		}
 	}
 }
+
+export { Product };
