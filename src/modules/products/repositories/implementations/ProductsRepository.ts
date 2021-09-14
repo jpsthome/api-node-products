@@ -13,7 +13,7 @@ class ProductsRepository implements IProductsRepository {
 		this.products = [];
 	}
 
-	public static getIntance(): ProductsRepository {
+	public static getInstance(): ProductsRepository {
 		if (!ProductsRepository.INSTANCE) {
 			ProductsRepository.INSTANCE = new ProductsRepository();
 		}
@@ -63,3 +63,5 @@ class ProductsRepository implements IProductsRepository {
 		});
 	}
 }
+
+export { ProductsRepository };
