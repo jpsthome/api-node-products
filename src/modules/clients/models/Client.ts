@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 class Client {
 	id?: string;
 	name: string;
-	fabrication: "nacional" | "importado";
+	fabrication: string;
 	size: number;
 	value: number;
 	createdAt?: Date;
