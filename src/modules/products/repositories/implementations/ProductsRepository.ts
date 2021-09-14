@@ -26,6 +26,12 @@ class ProductsRepository implements IProductsRepository {
 		});
 	}
 
+	findByName(name: string): Product {
+		return this.products.find((prod) => {
+			prod.name === name;
+		});
+	}
+
 	list(): Product[] {
 		return this.products;
 	}
