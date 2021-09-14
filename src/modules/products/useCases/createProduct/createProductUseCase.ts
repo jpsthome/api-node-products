@@ -19,3 +19,5 @@ class CreateProductUseCase {
 		this.productRepository.create({ name, cpf, sex, email });
 	}
 }
+
+export { CreateProductUseCase };
