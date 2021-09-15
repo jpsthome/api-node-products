@@ -2,6 +2,7 @@ import { v4 as uuid } from "uuid";
 
 class Client {
 	id?: string;
+	clientCode: number;
 	name: string;
 	cpf: string;
 	sex: string;

@@ -1,6 +1,7 @@
 import { Client } from "../models/Client";
 
 interface ICreateClientDTO {
+	clientCode: number;
 	name: string;
 	cpf: string;
 	sex: string;
@@ -8,6 +9,7 @@ interface ICreateClientDTO {
 }
 
 interface IUpdateClientDTO {
+	clientCode: number;
 	name: string;
 	cpf: string;
 	sex: string;
@@ -17,9 +19,13 @@ interface IUpdateClientDTO {
 interface IClientsRepository {
 	findById(id: string): Client;
 	findByName(name: string): Client;
+	findByCode(clientCode: number): Client;
 	list(): Client[];
-	create({ name, cpf, sex, email }: ICreateClientDTO): void;
-	update(id: string, { name, cpf, sex, email }: IUpdateClientDTO): void;
+	create({ clientCode, name, cpf, sex, email }: ICreateClientDTO): void;
+	update(
+		id: string,
+		{ clientCode, name, cpf, sex, email }: IUpdateClientDTO,
+	): void;
 	delete(id: string): void;
 }
 
