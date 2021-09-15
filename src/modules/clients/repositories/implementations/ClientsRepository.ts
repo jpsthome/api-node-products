@@ -21,20 +21,14 @@ class ClientsRepository implements IClientsRepository {
 	}
 
 	findById(id: string): Client {
-		return this.clients.find((cli) => {
-			cli.id === id;
-		});
+		return this.clients.find((cli) => cli.id === id);
 	}
 
 	findByName(name: string): Client {
-		return this.clients.find((cli) => {
-			cli.name === name;
-		});
+		return this.clients.find((cli) => cli.name === name);
 	}
 	findByCode(clientCode: number): Client {
-		return this.clients.find((cli) => {
-			cli.clientCode === clientCode;
-		});
+		return this.clients.find((cli) => cli.clientCode === clientCode);
 	}
 
 	list(): Client[] {
@@ -69,9 +63,7 @@ class ClientsRepository implements IClientsRepository {
 		});
 	}
 	delete(id: string): void {
-		this.clients.filter((client) => {
-			client.id === id;
-		});
+		this.clients = this.clients.filter((client) => client.id === id);
 	}
 }
 
