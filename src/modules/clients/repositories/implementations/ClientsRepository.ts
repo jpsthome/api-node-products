@@ -63,7 +63,7 @@ class ClientsRepository implements IClientsRepository {
 		});
 	}
 	delete(id: string): void {
-		this.clients = this.clients.filter((client) => client.id === id);
+		this.clients = this.clients.filter((client) => client.id !== id);
 	}
 }
 
