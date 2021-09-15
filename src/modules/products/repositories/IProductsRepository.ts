@@ -2,24 +2,27 @@ import { Product } from "../models/Product";
 
 interface ICreateProductDTO {
 	name: string;
-	cpf: string;
-	sex: string;
-	email: string;
+	fabrication: string;
+	size: number;
+	value: number;
 }
 
 interface IUpdateProductDTO {
 	name: string;
-	cpf: string;
-	sex: string;
-	email: string;
+	fabrication: string;
+	size: number;
+	value: number;
 }
 
 interface IProductsRepository {
 	findById(id: string): Product;
 	findByName(name: string): Product;
 	list(): Product[];
-	create({ name, cpf, sex, email }: ICreateProductDTO): void;
-	update(id: string, { name, cpf, sex, email }: IUpdateProductDTO): void;
+	create({ name, fabrication, size, value }: ICreateProductDTO): void;
+	update(
+		id: string,
+		{ name, fabrication, size, value }: IUpdateProductDTO,
+	): void;
 	delete(id: string): void;
 }
 

@@ -5,8 +5,8 @@ class CreateProductController {
 	constructor(private createProductUseCase: CreateProductUseCase) {}
 
 	handle(req: Request, res: Response) {
-		const { name, cpf, sex, email } = req.body;
-		this.createProductUseCase.execute({ name, cpf, sex, email });
+		const { name, fabrication, size, value } = req.body;
+		this.createProductUseCase.execute({ name, fabrication, size, value });
 		return res.status(201).send();
 	}
 }

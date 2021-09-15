@@ -5,8 +5,8 @@ class CreateClientController {
 	constructor(private createClientUseCase: CreateClientUseCase) {}
 
 	handle(req: Request, res: Response) {
-		const { name, fabrication, size, value } = req.body;
-		this.createClientUseCase.execute({ name, fabrication, size, value });
+		const { name, cpf, sex, email } = req.body;
+		this.createClientUseCase.execute({ name, cpf, sex, email });
 		return res.status(201).send();
 	}
 }
