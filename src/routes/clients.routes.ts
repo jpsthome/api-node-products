@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import { createClientController } from "../modules/clients/useCases/createClient";
+import { deleteClientController } from "../modules/clients/useCases/deleteClient";
 import { getClientByIdController } from "../modules/clients/useCases/getClientById";
 import { listClientsController } from "../modules/clients/useCases/listClients";
 import { updateClientController } from "../modules/clients/useCases/updateClient";
@@ -24,7 +25,7 @@ clientsRoutes.put("/:id", (req, res) => {
 });
 
 clientsRoutes.delete("/:id", (req, res) => {
-	return res.json({ msg: "deleta um cliente" });
+	return deleteClientController.handle(req, res);
 });
 
 export { clientsRoutes };
