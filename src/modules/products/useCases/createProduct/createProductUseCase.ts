@@ -16,12 +16,13 @@ class CreateProductUseCase {
 		const productNameAlreadyExist = this.productRepository.findByName(name);
 		const productCodeAlreadyExist =
 			this.productRepository.findByCode(productCode);
-		if (productNameAlreadyExist) {
-			throw new Error(`Product ${name} already exists`);
+		if (productNameAlreadyExist || productCodeAlreadyExist) {
+			throw new Error(`Product ${name}#${productCode} already exists`);
 		}
-		if (productCodeAlreadyExist) {
-			throw new Error(`Product ${productCode} already exists`);
+		if (fabrication != "nacional" && fabrication != "importado") {
+			throw new Error(`Fabrication must be "nacional" or "importado"`);
 		}
+
 		this.productRepository.create({
 			productCode,
 			name,

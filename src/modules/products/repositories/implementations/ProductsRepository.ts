@@ -21,9 +21,7 @@ class ProductsRepository implements IProductsRepository {
 	}
 
 	findById(id: string): Product {
-		return this.products.find((prod) => {
-			prod.id === id;
-		});
+		return this.products.find((prod) => prod.id === id);
 	}
 
 	findByName(name: string): Product {
@@ -74,9 +72,7 @@ class ProductsRepository implements IProductsRepository {
 		});
 	}
 	delete(id: string): void {
-		this.products.filter((product) => {
-			product.id === id;
-		});
+		this.products = this.products.filter((product) => product.id !== id);
 	}
 }
 
