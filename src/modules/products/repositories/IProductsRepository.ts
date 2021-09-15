@@ -1,6 +1,7 @@
 import { Product } from "../models/Product";
 
 interface ICreateProductDTO {
+	productCode: number;
 	name: string;
 	fabrication: string;
 	size: number;
@@ -8,6 +9,7 @@ interface ICreateProductDTO {
 }
 
 interface IUpdateProductDTO {
+	productCode: number;
 	name: string;
 	fabrication: string;
 	size: number;
@@ -17,11 +19,18 @@ interface IUpdateProductDTO {
 interface IProductsRepository {
 	findById(id: string): Product;
 	findByName(name: string): Product;
+	findByCode(productCode: number): Product;
 	list(): Product[];
-	create({ name, fabrication, size, value }: ICreateProductDTO): void;
+	create({
+		productCode,
+		name,
+		fabrication,
+		size,
+		value,
+	}: ICreateProductDTO): void;
 	update(
 		id: string,
-		{ name, fabrication, size, value }: IUpdateProductDTO,
+		{ productCode, name, fabrication, size, value }: IUpdateProductDTO,
 	): void;
 	delete(id: string): void;
 }

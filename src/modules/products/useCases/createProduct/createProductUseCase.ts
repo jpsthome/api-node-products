@@ -1,6 +1,7 @@
 import { IProductsRepository } from "../../repositories/IProductsRepository";
 
 interface IRequest {
+	productCode: number;
 	name: string;
 	fabrication: string;
 	size: number;
@@ -11,12 +12,23 @@ class CreateProductUseCase {
 	// D:inversão de dependências
 	constructor(private productRepository: IProductsRepository) {}
 
-	execute({ name, fabrication, size, value }: IRequest): void {
-		const productAlreadyExist = this.productRepository.findByName(name);
-		if (productAlreadyExist) {
+	execute({ productCode, name, fabrication, size, value }: IRequest): void {
+		const productNameAlreadyExist = this.productRepository.findByName(name);
+		const productCodeAlreadyExist =
+			this.productRepository.findByCode(productCode);
+		if (productNameAlreadyExist) {
 			throw new Error(`Product ${name} already exists`);
 		}
-		this.productRepository.create({ name, fabrication, size, value });
+		if (productCodeAlreadyExist) {
+			throw new Error(`Product ${productCode} already exists`);
+		}
+		this.productRepository.create({
+			productCode,
+			name,
+			fabrication,
+			size,
+			value,
+		});
 	}
 }
 

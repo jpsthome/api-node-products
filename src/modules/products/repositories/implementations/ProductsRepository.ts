@@ -27,33 +27,49 @@ class ProductsRepository implements IProductsRepository {
 	}
 
 	findByName(name: string): Product {
-		return this.products.find((prod) => {
-			prod.name === name;
-		});
+		const produto = this.products.find((prod) => prod.name === name);
+		return produto;
+	}
+	findByCode(productCode: number): Product {
+		const produto = this.products.find(
+			(prod) => prod.productCode === productCode,
+		);
+		return produto;
 	}
 
 	list(): Product[] {
 		return this.products;
 	}
-	create({ name, cpf, sex, email }: ICreateProductDTO): void {
+	create({
+		productCode,
+		name,
+		fabrication,
+		size,
+		value,
+	}: ICreateProductDTO): void {
 		const product = new Product();
 		Object.assign(product, {
+			productCode,
 			name,
-			cpf,
-			sex,
-			email,
+			fabrication,
+			size,
+			value,
 			createdAt: new Date(),
 		});
 		this.products.push(product);
 	}
-	update(id: string, { name, cpf, sex, email }: IUpdateProductDTO): void {
+	update(
+		id: string,
+		{ productCode, name, fabrication, size, value }: IUpdateProductDTO,
+	): void {
 		// TODO: ver se isso aqui ta funcionando
 		const product = this.findById(id);
 		Object.assign(product, {
+			productCode,
 			name,
-			cpf,
-			sex,
-			email,
+			fabrication,
+			size,
+			value,
 			updatedAt: new Date(),
 		});
 	}
