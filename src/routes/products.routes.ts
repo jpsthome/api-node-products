@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createProductController } from "../modules/products/useCases/createProduct";
 import { deleteProductController } from "../modules/products/useCases/deleteProduct";
+import { getProductByIdController } from "../modules/products/useCases/getProductById";
 import { listProductsController } from "../modules/products/useCases/listProducts";
 import { updateProductController } from "../modules/products/useCases/updateProduct";
 
@@ -11,9 +12,7 @@ productsRoutes.get("/", (req, res) => {
 });
 
 productsRoutes.get("/:id", (req, res) => {
-	return res.status(200).send({
-		msg: `consulta um produto com o id ${req.params.id}`,
-	});
+	return getProductByIdController.handle(req, res);
 });
 
 productsRoutes.post("/", (req, res) => {
