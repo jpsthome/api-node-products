@@ -4,7 +4,7 @@ class Product {
 	id?: string;
 	productCode: number;
 	name: string;
-	fabrication: string;
+	fabrication: "nacional" | "internacional";
 	size: number;
 	value: number;
 	createdAt?: Date;

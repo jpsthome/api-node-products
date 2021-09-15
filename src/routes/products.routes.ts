@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createProductController } from "../modules/products/useCases/createProduct";
+import { deleteProductController } from "../modules/products/useCases/deleteProduct";
 import { listProductsController } from "../modules/products/useCases/listProducts";
 
 const productsRoutes = Router();
@@ -25,7 +26,7 @@ productsRoutes.put("/:id", (req, res) => {
 });
 
 productsRoutes.delete("/:id", (req, res) => {
-	return res.status(204).send();
+	return deleteProductController.handle(req, res);
 });
 
 export { productsRoutes };
