@@ -6,8 +6,14 @@ class DeleteProductController {
 
 	handle(req: Request, res: Response) {
 		const { id } = req.params;
-		this.deleteProductUseCase.execute({ id });
-		res.status(204).send();
+		try {
+			this.deleteProductUseCase.execute({ id });
+			return res.status(204).send();
+		} catch (err) {
+			return res.status(400).send({
+				message: err.message,
+			});
+		}
 	}
 }
 

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createProductController } from "../modules/products/useCases/createProduct";
 import { deleteProductController } from "../modules/products/useCases/deleteProduct";
 import { listProductsController } from "../modules/products/useCases/listProducts";
+import { updateProductController } from "../modules/products/useCases/updateProduct";
 
 const productsRoutes = Router();
 
@@ -20,9 +21,7 @@ productsRoutes.post("/", (req, res) => {
 });
 
 productsRoutes.put("/:id", (req, res) => {
-	return res
-		.status(200)
-		.send({ msg: `atualiza um produtos com o id ${req.params.id}` });
+	return updateProductController.handle(req, res);
 });
 
 productsRoutes.delete("/:id", (req, res) => {

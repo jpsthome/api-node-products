@@ -3,7 +3,7 @@ import { Product } from "../models/Product";
 interface ICreateProductDTO {
 	productCode: number;
 	name: string;
-	fabrication: string;
+	fabrication: "nacional" | "importado";
 	size: number;
 	value: number;
 }
@@ -11,7 +11,7 @@ interface ICreateProductDTO {
 interface IUpdateProductDTO {
 	productCode: number;
 	name: string;
-	fabrication: string;
+	fabrication: "nacional" | "importado";
 	size: number;
 	value: number;
 }
