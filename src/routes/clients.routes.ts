@@ -1,11 +1,12 @@
 import { Router } from "express";
 
 import { createClientController } from "../modules/clients/useCases/createClient";
+import { listClientsController } from "../modules/clients/useCases/listClients";
 
 const clientsRoutes = Router();
 
 clientsRoutes.get("/", (req, res) => {
-	return res.json({ msg: "consulta tods clientes" });
+	return listClientsController.handle(req, res);
 });
 
 clientsRoutes.get("/:id", (req, res) => {
