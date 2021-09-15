@@ -60,7 +60,6 @@ class ProductsRepository implements IProductsRepository {
 		id: string,
 		{ productCode, name, fabrication, size, value }: IUpdateProductDTO,
 	): void {
-		// TODO: ver se isso aqui ta funcionando
 		const product = this.findById(id);
 		Object.assign(product, {
 			productCode,
