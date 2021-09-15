@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { createProductController } from "../modules/products/useCases/createProduct";
+import { listProductsController } from "../modules/products/useCases/listProducts";
 
 const productsRoutes = Router();
 
 productsRoutes.get("/", (req, res) => {
-	return res.send({ msg: "consulta todas os produtos" });
+	return listProductsController.handle(req, res);
 });
 
 productsRoutes.get("/:id", (req, res) => {

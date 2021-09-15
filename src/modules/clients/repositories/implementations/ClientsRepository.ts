@@ -36,28 +36,25 @@ class ClientsRepository implements IClientsRepository {
 		return this.clients;
 	}
 	// TODO: Colocar uma validação se fabrication é igual 'nacional' ou 'importado'
-	create({ name, fabrication, size, value }: ICreateClientDTO): void {
+	create({ name, cpf, sex, email }: ICreateClientDTO): void {
 		const client = new Client();
-		Object.assign(Client, {
+		Object.assign(client, {
 			name,
-			fabrication,
-			size,
-			value,
+			cpf,
+			sex,
+			email,
 			createdAt: new Date(),
 		});
 		this.clients.push(client);
 	}
-	update(
-		id: string,
-		{ name, fabrication, size, value }: IUpdateClientDTO,
-	): void {
+	update(id: string, { name, cpf, sex, email }: IUpdateClientDTO): void {
 		// TODO: ver se isso aqui ta funcionando
 		const client = this.findById(id);
 		Object.assign(client, {
 			name,
-			fabrication,
-			size,
-			value,
+			cpf,
+			sex,
+			email,
 			updatedAt: new Date(),
 		});
 	}
