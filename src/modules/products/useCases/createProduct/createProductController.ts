@@ -6,14 +6,20 @@ class CreateProductController {
 
 	handle(req: Request, res: Response) {
 		const { productCode, name, fabrication, size, value } = req.body;
-		this.createProductUseCase.execute({
-			productCode,
-			name,
-			fabrication,
-			size,
-			value,
-		});
-		return res.status(201).send();
+		try {
+			this.createProductUseCase.execute({
+				productCode,
+				name,
+				fabrication,
+				size,
+				value,
+			});
+			return res.status(201).send();
+		} catch (err) {
+			return res.status(400).send({
+				message: err.message,
+			});
+		}
 	}
 }
 
