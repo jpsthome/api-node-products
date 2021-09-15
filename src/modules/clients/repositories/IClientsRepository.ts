@@ -2,14 +2,14 @@ import { Client } from "../models/Client";
 
 interface ICreateClientDTO {
 	name: string;
-	fabrication: "nacional" | "importado";
+	fabrication: string;
 	size: number;
 	value: number;
 }
 
 interface IUpdateClientDTO {
 	name: string;
-	fabrication: "nacional" | "importado";
+	fabrication: string;
 	size: number;
 	value: number;
 }
