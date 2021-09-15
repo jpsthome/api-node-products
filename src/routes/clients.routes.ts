@@ -3,6 +3,7 @@ import { Router } from "express";
 import { createClientController } from "../modules/clients/useCases/createClient";
 import { getClientByIdController } from "../modules/clients/useCases/getClientById";
 import { listClientsController } from "../modules/clients/useCases/listClients";
+import { updateClientController } from "../modules/clients/useCases/updateClient";
 
 const clientsRoutes = Router();
 
@@ -19,7 +20,7 @@ clientsRoutes.post("/", (req, res) => {
 });
 
 clientsRoutes.put("/:id", (req, res) => {
-	return res.json({ msg: "atualiza um cliente" });
+	return updateClientController.handle(req, res);
 });
 
 clientsRoutes.delete("/:id", (req, res) => {
