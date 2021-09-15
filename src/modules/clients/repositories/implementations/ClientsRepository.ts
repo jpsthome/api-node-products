@@ -21,24 +21,24 @@ class ClientsRepository implements IClientsRepository {
 	}
 
 	findById(id: string): Client {
-		return this.clients.find((cli) => {
-			cli.id === id;
-		});
+		return this.clients.find((cli) => cli.id === id);
 	}
 
 	findByName(name: string): Client {
-		return this.clients.find((cli) => {
-			cli.name === name;
-		});
+		return this.clients.find((cli) => cli.name === name);
+	}
+	findByCode(clientCode: number): Client {
+		return this.clients.find((cli) => cli.clientCode === clientCode);
 	}
 
 	list(): Client[] {
 		return this.clients;
 	}
 	// TODO: Colocar uma validação se fabrication é igual 'nacional' ou 'importado'
-	create({ name, cpf, sex, email }: ICreateClientDTO): void {
+	create({ clientCode, name, cpf, sex, email }: ICreateClientDTO): void {
 		const client = new Client();
 		Object.assign(client, {
+			clientCode,
 			name,
 			cpf,
 			sex,
@@ -47,10 +47,14 @@ class ClientsRepository implements IClientsRepository {
 		});
 		this.clients.push(client);
 	}
-	update(id: string, { name, cpf, sex, email }: IUpdateClientDTO): void {
+	update(
+		id: string,
+		{ clientCode, name, cpf, sex, email }: IUpdateClientDTO,
+	): void {
 		// TODO: ver se isso aqui ta funcionando
 		const client = this.findById(id);
 		Object.assign(client, {
+			clientCode,
 			name,
 			cpf,
 			sex,
@@ -59,9 +63,7 @@ class ClientsRepository implements IClientsRepository {
 		});
 	}
 	delete(id: string): void {
-		this.clients.filter((client) => {
-			client.id === id;
-		});
+		this.clients = this.clients.filter((client) => client.id === id);
 	}
 }
 
