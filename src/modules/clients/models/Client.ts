@@ -3,9 +3,9 @@ import { v4 as uuid } from "uuid";
 class Client {
 	id?: string;
 	name: string;
-	fabrication: string;
-	size: number;
-	value: number;
+	cpf: string;
+	sex: string;
+	email: string;
 	createdAt?: Date;
 	updatedAt?: Date;
 

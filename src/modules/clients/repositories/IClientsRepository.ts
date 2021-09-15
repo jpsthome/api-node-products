@@ -2,27 +2,24 @@ import { Client } from "../models/Client";
 
 interface ICreateClientDTO {
 	name: string;
-	fabrication: "nacional" | "importado";
-	size: number;
-	value: number;
+	cpf: string;
+	sex: string;
+	email: string;
 }
 
 interface IUpdateClientDTO {
 	name: string;
-	fabrication: "nacional" | "importado";
-	size: number;
-	value: number;
+	cpf: string;
+	sex: string;
+	email: string;
 }
 
 interface IClientsRepository {
 	findById(id: string): Client;
 	findByName(name: string): Client;
 	list(): Client[];
-	create({ name, fabrication, size, value }: ICreateClientDTO): void;
-	update(
-		id: string,
-		{ name, fabrication, size, value }: IUpdateClientDTO,
-	): void;
+	create({ name, cpf, sex, email }: ICreateClientDTO): void;
+	update(id: string, { name, cpf, sex, email }: IUpdateClientDTO): void;
 	delete(id: string): void;
 }
 
