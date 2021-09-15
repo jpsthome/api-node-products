@@ -1,5 +1,7 @@
 import { Router } from "express";
 
+import { createClientController } from "../modules/clients/useCases/createClient";
+
 const clientsRoutes = Router();
 
 clientsRoutes.get("/", (req, res) => {
@@ -11,7 +13,7 @@ clientsRoutes.get("/:id", (req, res) => {
 });
 
 clientsRoutes.post("/", (req, res) => {
-	return res.json({ msg: "adiciona um cliente" });
+	return createClientController.handle(req, res);
 });
 
 clientsRoutes.put("/:id", (req, res) => {
