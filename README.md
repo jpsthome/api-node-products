@@ -13,3 +13,7 @@ Caso prefira usar o npm:
 Execute: `npm install` para instalar as dependências
 
 Execute: `npm run dev` para iniciar a API
+
+## Importante
+
+Essa API só mantém os dados enquanto a sessão estiver funcionando, caso seja reiniciado será perdido os dados salvos.
